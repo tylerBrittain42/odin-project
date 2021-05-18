@@ -1,2 +1,3 @@
 # odin-project
-Odin Project solutions
+## by Tyler Brittain
+This repo contains solutions to various Odin Project challenges to brush up my web development skills
