@@ -1,0 +1,10 @@
+.board-container{
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat((16, 1fr));
+    gap: 20px;
+}
+
+.board-tile{
+    background-color: aqua;
+}
