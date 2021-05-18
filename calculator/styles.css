@@ -1,0 +1,36 @@
+body{
+    background-color: whitesmoke;
+}
+
+.container{
+    display:grid;
+    row-gap:0;
+    grid-template-columns: repeat(5,auto);
+    grid-template-rows: repeat(6,auto);
+    width: 25%;
+
+    border: 2px solid black;
+
+}
+
+.grid-item{
+
+}
+
+.display{
+    grid-column: 1/6;
+}
+
+.big-button{
+    grid-column: 5/6;
+
+   
+}
+
+#clr{
+    grid-row: 2/4;
+
+}
+#enter{
+    grid-row: 4/6;
+}
