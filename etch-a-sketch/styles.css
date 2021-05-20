@@ -27,7 +27,10 @@ body{
     height: 50px;
     width: 50px;
     border: 1px solid black;
+}
 
 
-
+input[type=text] {
+    border-radius: 100px;
+    width: 100%;
 }
