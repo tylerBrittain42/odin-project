@@ -4,7 +4,10 @@
 
 let myLibrary = []
 // making a few sample books for testing purposes
-myLibrary.push(new Book('truancy','isamu',120,false));
+// for(let i = 0; i < 5; i++){
+    myLibrary.push(new Book('truancy','isamu',120,false));
+// }
+
 displayLibary()
 
 function Book(title, author, pages, haveRead){
@@ -25,7 +28,7 @@ function addBookToLibary(){
 
 function displayLibary(){
 
-    const shelf = document.querySelector('.shelf')
+    const shelf = document.querySelector('.container')
     
     myLibrary.forEach(book => {
         
@@ -55,7 +58,25 @@ function displayLibary(){
         tag.innerHTML = 'Completed'
         bookTag.appendChild(tag)
 
+        createListener(tag)
+
 
     });
+
+}
+
+function createListener(toAdd){
+
+    toAdd.addEventListener('click', () => {
+        
+        if(toAdd.innerHTML === "Completed"){
+            toAdd.innerHTML = "Not Completed"
+        }
+        else{
+            toAdd.innerHTML = "Completed"
+        }
+
+    })
+
 
 }
