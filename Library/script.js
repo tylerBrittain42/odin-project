@@ -35,7 +35,7 @@ function displayLibary(){
 
 }
 
-function createListener(toAdd){
+function createToggle(toAdd){
 
     toAdd.addEventListener('click', () => {
         
@@ -58,9 +58,12 @@ function addBookToLibary(title,author,pgCt){
 
 }
 
-function removeBook(){
+function removeBook(id){
 
+    let removedEle = document.getElementById(String(id))
 
+    myLibrary.splice(id,1);
+    removedEle.remove()
 
 }
 
@@ -92,7 +95,7 @@ function displayBook(shelff, curBook, index){
     tag.innerHTML = 'Completed'
     bookTag.appendChild(tag)
 
-    createListener(tag)
+    createToggle(tag)
 
     //line break
     tag = document.createElement('br')
@@ -103,8 +106,8 @@ function displayBook(shelff, curBook, index){
     tag.innerHTML = 'Remove'
     bookTag.appendChild(tag)
 
-    
-
+    //adding listener for remove button
+    tag.addEventListener('click', () => {removeBook(index)})
 
 
 
