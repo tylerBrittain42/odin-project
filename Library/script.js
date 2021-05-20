@@ -9,6 +9,7 @@ let myLibrary = []
 // }
 
 displayLibary()
+addMenu()
 
 function Book(title, author, pages, haveRead){
 
@@ -110,5 +111,56 @@ function displayBook(shelff, curBook, index){
     tag.addEventListener('click', () => {removeBook(index)})
 
 
+
+}
+
+function addMenu(){
+
+    //getting relevant dom information
+    const body = document.querySelector('body')
+    const targetNode = document.querySelector('h1')
+
+    //creating form
+    const formTag = document.createElement('form')
+    formTag.setAttribute('class','new-book-form')
+    formTag.innerHTML = 'placeholder text'
+    body.insertBefore(formTag, targetNode.nextSibling)
+
+    //adding title input
+    let tag = document.createElement('input')
+    tag.setAttribute('type','text')
+    tag.setAttribute('name','newTitle')
+    tag.setAttribute('placeholder','Title')
+    formTag.appendChild(tag)
+    formTag.appendChild(document.createElement('br'))
+
+    //adding author input
+    tag = document.createElement('input')
+    tag.setAttribute('type','text')
+    tag.setAttribute('name','newAuthor')
+    tag.setAttribute('placeholder','Author')
+    formTag.appendChild(tag)
+    formTag.appendChild(document.createElement('br'))
+
+    //adding page count input
+    tag = document.createElement('input')
+    tag.setAttribute('type','text')
+    tag.setAttribute('name','newPageCount')
+    tag.setAttribute('placeholder','Page Count')
+    formTag.appendChild(tag)
+    formTag.appendChild(document.createElement('br'))
+
+    //adding submit button
+    tag = document.createElement('input')
+    tag.setAttribute('type','button')
+    tag.setAttribute('value','Submit')
+    tag.setAttribute('onclick','addBookToLibary(newTitle.value,newAuthor.value,newPageCount.value);')
+    formTag.appendChild(tag)
+
+    
+    
+    console.log(body)
+
+    
 
 }
