@@ -9,7 +9,6 @@ let myLibrary = []
 // }
 
 displayLibary()
-addMenu()
 
 function Book(title, author, pages, haveRead){
 
@@ -116,6 +115,9 @@ function displayBook(shelff, curBook, index){
 
 function addMenu(){
 
+    if(document.querySelector('.new-book-form') !== null)
+        return
+
     //getting relevant dom information
     const body = document.querySelector('body')
     const targetNode = document.querySelector('h1')
@@ -123,7 +125,6 @@ function addMenu(){
     //creating form
     const formTag = document.createElement('form')
     formTag.setAttribute('class','new-book-form')
-    formTag.innerHTML = 'placeholder text'
     body.insertBefore(formTag, targetNode.nextSibling)
 
     //adding title input
@@ -156,10 +157,8 @@ function addMenu(){
     tag.setAttribute('value','Submit')
     tag.setAttribute('onclick','addBookToLibary(newTitle.value,newAuthor.value,newPageCount.value);')
     formTag.appendChild(tag)
-
     
     
-    console.log(body)
 
     
 
