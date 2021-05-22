@@ -2,14 +2,6 @@
 // for using objects in javascript
 
 
-let myLibrary = []
-// making a few sample books for testing purposes
-// for(let i = 0; i < 5; i++){
-    myLibrary.push(new Book('truancy','isamu',120,false));
-// }
-
-displayLibary()
-
 function Book(title, author, pages, haveRead){
 
     this.title = title
@@ -21,6 +13,24 @@ function Book(title, author, pages, haveRead){
         return (title + ' by ' + author + ' is ' + pages + ' pages long.')
     }
 }
+
+Book.prototype.toggleReadStatus = function() {
+    this.haveRead = !this.haveRead
+}
+
+let myLibrary = []
+// making a few sample books for testing purposes
+// for(let i = 0; i < 5; i++){
+myLibrary.push(new Book('truancy','isamu',120,false));
+myLibrary[0].toggleReadStatus()
+
+// }
+
+displayLibary()
+
+
+
+
 
 function displayLibary(){
 
@@ -38,8 +48,12 @@ function displayLibary(){
 function createToggle(toAdd){
 
     toAdd.addEventListener('click', () => {
+
+        const bookID = toAdd.parentNode.id
+        myLibrary[bookID].toggleReadStatus()
+        console.log(myLibrary[bookID].haveRead)
         
-        if(toAdd.innerHTML === "Completed"){
+        if(myLibrary[bookID].haveRead === false){
             toAdd.innerHTML = "Not Completed"
         }
         else{
@@ -157,9 +171,14 @@ function addMenu(){
     tag.setAttribute('value','Submit')
     tag.setAttribute('onclick','addBookToLibary(newTitle.value,newAuthor.value,newPageCount.value);')
     formTag.appendChild(tag)
+
+    tag.addEventListener('click', () => {
+        let addForm = document.querySelector('.new-book-form')
+        addForm.remove()
+
+    })
     
     
 
-    
 
 }
