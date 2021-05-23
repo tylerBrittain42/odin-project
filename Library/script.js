@@ -2,6 +2,17 @@
 // for using objects in javascript
 
 
+
+let myLibrary = []
+
+// making a few sample books for testing purposes
+// for(let i = 0; i < 5; i++){
+myLibrary.push(new Book('truancy','isamu',120,false));
+
+// }
+
+
+
 function Book(title, author, pages, haveRead){
 
     this.title = title
@@ -18,18 +29,21 @@ Book.prototype.toggleReadStatus = function() {
     this.haveRead = !this.haveRead
 }
 
-let myLibrary = []
-// making a few sample books for testing purposes
-// for(let i = 0; i < 5; i++){
-myLibrary.push(new Book('truancy','isamu',120,false));
-myLibrary[0].toggleReadStatus()
+// localStorage.clear()
+if (localStorage.getItem('localLibrary') !== null){
+    console.log(Object.entries(localStorage))
+    myLibrary = JSON.parse(localStorage.getItem('localLibrary'))
+}
+else{
+    console.log('false')
+    localStorage.setItem('localLibrary',JSON.stringify(myLibrary))
+}
 
-// }
+localStorage.setItem('localLibrary',JSON.stringify(myLibrary))
+console.log(JSON.parse(localStorage.getItem('localLibrary')))
+
 
 displayLibary()
-
-
-
 
 
 function displayLibary(){
@@ -59,6 +73,7 @@ function createToggle(toAdd){
         else{
             toAdd.innerHTML = "Completed"
         }
+        localStorage.setItem('localLibrary',JSON.stringify(myLibrary))
 
     })
 }
@@ -70,6 +85,9 @@ function addBookToLibary(title,author,pgCt){
     myLibrary.push(new Book(title,author,Number(pgCt),false));
     displayBook(shelf,myLibrary[myLibrary.length - 1], myLibrary.length - 1)
 
+    localStorage.setItem('localLibrary',JSON.stringify(myLibrary))
+
+
 }
 
 function removeBook(id){
@@ -78,6 +96,8 @@ function removeBook(id){
 
     myLibrary.splice(id,1);
     removedEle.remove()
+    localStorage.setItem('localLibrary',JSON.stringify(myLibrary))
+
 
 }
 
@@ -106,7 +126,7 @@ function displayBook(shelff, curBook, index){
 
     //adding completed button to card
     tag = document.createElement('button')
-    tag.innerHTML = 'Completed'
+    tag.innerHTML = 'Not Completed'
     bookTag.appendChild(tag)
 
     createToggle(tag)
