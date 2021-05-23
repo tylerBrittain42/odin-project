@@ -1,17 +1,18 @@
-// This directory is going to serve as practice
-// for using objects in javascript
-
-
 
 let myLibrary = []
 
-// making a few sample books for testing purposes
-// for(let i = 0; i < 5; i++){
-myLibrary.push(new Book('truancy','isamu',120,false));
+// Loads library from local storage(if it exists)
+if (localStorage.getItem('localLibrary') !== null){
+    myLibrary = JSON.parse(localStorage.getItem('localLibrary'))
+}
+else{
+    localStorage.setItem('localLibrary',JSON.stringify(myLibrary))
+}
 
-// }
+// display initial library
+displayLibary()
 
-
+//-------------- functions below --------------//
 
 function Book(title, author, pages, haveRead){
 
@@ -25,27 +26,6 @@ function Book(title, author, pages, haveRead){
     }
 }
 
-Book.prototype.toggleReadStatus = function() {
-    this.haveRead = !this.haveRead
-}
-
-// localStorage.clear()
-if (localStorage.getItem('localLibrary') !== null){
-    console.log(Object.entries(localStorage))
-    myLibrary = JSON.parse(localStorage.getItem('localLibrary'))
-}
-else{
-    console.log('false')
-    localStorage.setItem('localLibrary',JSON.stringify(myLibrary))
-}
-
-localStorage.setItem('localLibrary',JSON.stringify(myLibrary))
-console.log(JSON.parse(localStorage.getItem('localLibrary')))
-
-
-displayLibary()
-
-
 function displayLibary(){
 
     const shelf = document.querySelector('.container')
@@ -54,18 +34,17 @@ function displayLibary(){
         
         displayBook(shelf, book, i)
 
-
     });
 
 }
 
+// Toggles between Completed/Not completed
 function createToggle(toAdd){
 
     toAdd.addEventListener('click', () => {
 
         const bookID = toAdd.parentNode.id
-        myLibrary[bookID].toggleReadStatus()
-        console.log(myLibrary[bookID].haveRead)
+        myLibrary[bookID].haveRead = !myLibrary[bookID].haveRead
         
         if(myLibrary[bookID].haveRead === false){
             toAdd.innerHTML = "Not Completed"
@@ -74,94 +53,92 @@ function createToggle(toAdd){
             toAdd.innerHTML = "Completed"
         }
         localStorage.setItem('localLibrary',JSON.stringify(myLibrary))
-
     })
 }
 
 function addBookToLibary(title,author,pgCt){
 
-    const shelf = document.querySelector('.container')
-
-    myLibrary.push(new Book(title,author,Number(pgCt),false));
-    displayBook(shelf,myLibrary[myLibrary.length - 1], myLibrary.length - 1)
-
+    // adding to library
+    myLibrary.push(new Book(title,author,Number(pgCt),false))
     localStorage.setItem('localLibrary',JSON.stringify(myLibrary))
 
+    // updating view
+    const shelf = document.querySelector('.container')
+    displayBook(shelf,myLibrary[myLibrary.length - 1], myLibrary.length - 1)
 
 }
 
 function removeBook(id){
 
-    let removedEle = document.getElementById(String(id))
-
+    // removing from library
     myLibrary.splice(id,1);
-    removedEle.remove()
     localStorage.setItem('localLibrary',JSON.stringify(myLibrary))
 
+    // removing from view
+    let removedEle = document.getElementById(String(id))
+    removedEle.remove()
 
 }
 
 function displayBook(shelff, curBook, index){
 
-    //creating card
+    // creating card
     const bookTag = document.createElement("div")
     bookTag.setAttribute('class',"book-card")
     bookTag.setAttribute('id',index)
     shelff.appendChild(bookTag)
     
-    //adding title to card
+    // adding title to card
     let tag = document.createElement('h2')
     tag.innerHTML = curBook.title
     bookTag.appendChild(tag)
 
-    //adding author to card
+    // adding author to card
     tag = document.createElement('h3')
     tag.innerHTML = curBook.author
     bookTag.appendChild(tag)
 
-    //adding page count to card
+    // adding page count to card
     tag = document.createElement('h3')
     tag.innerHTML = curBook.pages + ' pages'
     bookTag.appendChild(tag)
 
-    //adding completed button to card
+    // adding completed button to card
     tag = document.createElement('button')
-    tag.innerHTML = 'Not Completed'
+    tag.innerHTML = myLibrary[index].haveRead ? 'Completed' : 'Not Completed'
     bookTag.appendChild(tag)
 
     createToggle(tag)
 
-    //line break
+    // line break
     tag = document.createElement('br')
     bookTag.appendChild(tag)
 
-    //adding remove button to card
+    // adding remove button to card
     tag = document.createElement('button')
     tag.innerHTML = 'Remove'
     bookTag.appendChild(tag)
 
-    //adding listener for remove button
+    // adding listener for remove button
     tag.addEventListener('click', () => {removeBook(index)})
-
-
-
 }
 
 function addMenu(){
 
+    // if a menu already exists THEN return
     if(document.querySelector('.new-book-form') !== null)
         return
 
-    //getting relevant dom information
+    // getting relevant dom information
     const body = document.querySelector('body')
     const targetNode = document.querySelector('h1')
 
-    //creating form
+    // creating form
     const formTag = document.createElement('form')
     formTag.setAttribute('class','new-book-form')
     body.insertBefore(formTag, targetNode.nextSibling)
 
-    //adding title input
+    // adding title input
     let tag = document.createElement('input')
     tag.setAttribute('type','text')
     tag.setAttribute('name','newTitle')
@@ -169,7 +146,7 @@ function addMenu(){
     formTag.appendChild(tag)
     formTag.appendChild(document.createElement('br'))
 
-    //adding author input
+    // adding author input
     tag = document.createElement('input')
     tag.setAttribute('type','text')
     tag.setAttribute('name','newAuthor')
@@ -177,7 +154,7 @@ function addMenu(){
     formTag.appendChild(tag)
     formTag.appendChild(document.createElement('br'))
 
-    //adding page count input
+    // adding page count input
     tag = document.createElement('input')
     tag.setAttribute('type','text')
     tag.setAttribute('name','newPageCount')
@@ -185,20 +162,16 @@ function addMenu(){
     formTag.appendChild(tag)
     formTag.appendChild(document.createElement('br'))
 
-    //adding submit button
+    // adding submit button
     tag = document.createElement('input')
     tag.setAttribute('type','button')
     tag.setAttribute('value','Submit')
     tag.setAttribute('onclick','addBookToLibary(newTitle.value,newAuthor.value,newPageCount.value);')
     formTag.appendChild(tag)
 
+    // removes the menu once a book has been created
     tag.addEventListener('click', () => {
         let addForm = document.querySelector('.new-book-form')
         addForm.remove()
-
     })
-    
-    
-
-
 }
