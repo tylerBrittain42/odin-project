@@ -63,26 +63,30 @@ const gameBoard = (() => {
         claimSpace
     }
 
-
 })()
 
 // Factory example
-const Player = () => {
+const Player = (token) => {
 
+    const getToken = () => token
+    const setToken = (newToken) => {
+        token = newToken
+    }
 
     return{
-
+        getToken,
+        setToken
     }
 
 }
 
 
+// createListeners()
+// console.log(gameBoard.getLayout())
 
+const controller = (() => {
 
-createListeners()
-console.log(gameBoard.getLayout())
-
-
+})()
 
 
 
