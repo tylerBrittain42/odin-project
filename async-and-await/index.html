@@ -4,21 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Working with APIs</title>
+    <title>async and await</title>
 </head>
 <body>
-    <h1>API STUFF HERE</h1>
+    <h1>ASYNC STUFF HERE</h1>
     <img src="#" />
     <script>
         const img = document.querySelector('img')
-        fetch('https://api.giphy.com/v1/gifs/translate?api_key=&s=cats', {mode:'cors'})
-            .then((res) =>{
-                return res.json()
-            })
-            .then((res) =>{
-                console.log(res.data.images.original.url)
-                img.src=res.data.images.original.url
-            });
+        getCats()
+
+        async function getCats() {
+            const res = await fetch('https://api.giphy.com/v1/gifs/translate?api_key=&s=cats', {mode:'cors'})
+            const catData = await res.json()
+            console.log(catData.data.images.original.url)
+            img.src=catData.data.images.original.url
+                
+        } 
     </script>
 </body>
 </html>
