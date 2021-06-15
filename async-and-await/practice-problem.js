@@ -1,5 +1,4 @@
 // Converted the following function to utilize async await
-
 function loadJson(url) {
     return fetch(url)
       .then(response => {
@@ -10,7 +9,6 @@ function loadJson(url) {
         }
       });
   }
-  
   loadJson('no-such-user.json')
     .catch(alert); // Error: 404
 
@@ -22,7 +20,7 @@ async function loadJson(url) {
         return json}
     else
           throw new Error(response.status);
-      };
+};
   
   loadJson('no-such-user.json')
     .catch(alert); // Error: 404
