@@ -6,3 +6,8 @@ body {
 a {
   color: #00B7FF;
 }
+
+
+.card-margin{
+  margin: 1em;
+} 
