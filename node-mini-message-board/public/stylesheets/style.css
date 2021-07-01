@@ -11,3 +11,7 @@ a {
 .card-margin{
   margin: 1em;
 } 
+
+.left-margin{
+  margin-left: 1em;
+}
