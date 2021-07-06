@@ -14,7 +14,6 @@ var async = require('async')
 var Game = require('./models/game')
 var System = require('./models/system')
 var CardPack = require('./models/cardPack')
-var BookInstance = require('./models/bookinstance')
 
 
 var mongoose = require('mongoose');
@@ -28,8 +27,8 @@ var games = []
 var systems = []
 var cardPacks = []
 
-function gameCreate(title, system, price, age_rating) {
-  gamedetail = {title:title, system:system, price:price, age_rating:age_rating }
+function gameCreate(title, system, price, age_rating, cb) {
+  gamedetail = {title:title, system:system, price:price, age_rating:age_rating}
 
   var game = new Game(gamedetail);
        
@@ -44,7 +43,7 @@ function gameCreate(title, system, price, age_rating) {
   }  );
 }
 
-function systemCreate(name, cb) {
+function systemCreate(name, price, cb) {
   var system = new System({ name: name,price:price });
        
   system.save(function (err) {
@@ -58,8 +57,8 @@ function systemCreate(name, cb) {
   }   );
 }
 
-function cardPackCreate(name, franchise, price, count) {
-  CardPackDetail = { 
+function cardPackCreate(name, franchise, price, count, cb) {
+  cardPackDetail = { 
     name: name,
     franchise: franchise,
     price: price,
@@ -72,7 +71,7 @@ function cardPackCreate(name, franchise, price, count) {
       cb(err, null)
       return
     }
-    console.log('New Book: ' + cardPack);
+    console.log('New Pack: ' + cardPack);
     cardPacks.push(cardPack)
     cb(null, cardPack)
   }  );
