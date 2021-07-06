@@ -4,9 +4,17 @@ const Schema = mongoose.Schema;
 
 const CardPackSchema = new Schema(
     {
-        title: {type: String, required: true},
-        system: {type: String, required: true},
+        name: {type: String, required: true},
+        franchise: {type: String, required: true},
         price: {type: Number, required: true},
-        age_rating: {type: String}
+        count: {type: String}
     }
-)
+);
+
+CardPackSchema
+.virtual('url')
+.get(() => {
+    return('/catalog/cardpack/' + this._id)
+});
+
+module.exports = mongoose.model('CardPack', CardPackSchema);

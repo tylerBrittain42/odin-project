@@ -13,7 +13,7 @@
     - Name 
     - Franchise
     - Price (number)
-    - Card count (number)
+    - Count (number)
 ### **Routes**
 - catalog(index)
 ### **Controllers**
