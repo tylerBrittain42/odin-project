@@ -4,16 +4,16 @@
 - Games
     - Title
     - Sytem
-    - Price
+    - Price(number)
     - Age rating
 - Systems
     - Name
-    - Price
+    - Price (number)
 - Card packs
     - Name 
     - Franchise
-    - Price
-    - Card count
+    - Price (number)
+    - Card count (number)
 ### **Routes**
 - catalog(index)
 ### **Controllers**
