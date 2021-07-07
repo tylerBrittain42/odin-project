@@ -62,4 +62,28 @@ router.get('/system/:id', system_controller.system_detail);
 router.post('/systems', system_controller.system_list);
 
 
+// --- CARD PACK ROUTES --- 
 
+// GET cardPack creation
+router.get('/cardPack/create', cardPack_controller.cardPack_create_get);
+
+// POST cardPack creation
+router.post('/cardPack/create', cardPack_controller.cardPack_create_post);
+
+// GET cardPack deletion
+router.get('/cardPack/:id/delete', cardPack_controller.cardPack_delete_get);
+
+// POST cardPack deletion
+router.post('/cardPack/:id/delete', cardPack_controller.cardPack_delete_post);
+
+// GET cardPack update
+router.get('/cardPack/:id/update', cardPack_controller.cardPack_update_get);
+
+// POST cardPack update
+router.post('/cardPack/:id/update', cardPack_controller.cardPack_update_post);
+
+// GET request for a single cardPack
+router.get('/cardPack/:id', cardPack_controller.cardPack_detail);
+
+// GET request for list of all cardPacks
+router.post('/cardPacks', cardPack_controller.cardPack_list);
