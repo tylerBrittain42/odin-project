@@ -32,11 +32,34 @@ router.post('/game/:id/update', game_controller.game_update_post);
 router.get('/game/:id', game_controller.game_detail);
 
 // GET request for list of all games
-router.post('/game/create', game_controller.game_list);
+router.post('/games', game_controller.game_list);
 
 
 // --- SYSTEM ROUTES ---
 
+// GET system creation
+router.get('/system/create', system_controller.system_create_get);
+
+// POST system creation
+router.post('/system/create', system_controller.system_create_post);
+
+// GET system deletion
+router.get('/system/:id/delete', system_controller.system_delete_get);
+
+// POST system deletion
+router.post('/system/:id/delete', system_controller.system_delete_post);
+
+// GET system update
+router.get('/system/:id/update', system_controller.system_update_get);
+
+// POST system update
+router.post('/system/:id/update', system_controller.system_update_post);
+
+// GET request for a single system
+router.get('/system/:id', system_controller.system_detail);
+
+// GET request for list of all systems
+router.post('/systems', system_controller.system_list);
 
 
-// CARD PACK ROUTES
+
