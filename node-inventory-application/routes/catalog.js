@@ -87,3 +87,5 @@ router.get('/cardPack/:id', cardPack_controller.cardPack_detail);
 
 // GET request for list of all cardPacks
 router.post('/cardPacks', cardPack_controller.cardPack_list);
+
+modules.export = router;
