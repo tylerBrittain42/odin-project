@@ -21,5 +21,16 @@
 - systemController
 - cardPackController
 
+### **Controls for each**
+- list (all games) 
+- detail (single game)
+- create GET
+- create POST
+- delete GET
+- delete POST
+- update GET
+- update POST
+
+
 <br><br>
 ### **Views** 
