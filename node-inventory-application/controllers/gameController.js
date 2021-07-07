@@ -1,5 +1,9 @@
 const Game = require('../models/game');
 
+exports.game_index = (req, res) => {
+    res.send('NOT IMPLEMENTED');
+}
+
 exports.game_list = (req, res) => {
     res.send('NOT IMPLEMENTED')
 }
