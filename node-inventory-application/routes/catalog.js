@@ -32,7 +32,7 @@ router.post('/game/:id/update', game_controller.game_update_post);
 router.get('/game/:id', game_controller.game_detail);
 
 // GET request for list of all games
-router.post('/games', game_controller.game_list);
+router.get('/games', game_controller.game_list);
 
 
 // --- SYSTEM ROUTES ---
@@ -88,4 +88,4 @@ router.get('/cardPack/:id', cardPack_controller.cardPack_detail);
 // GET request for list of all cardPacks
 router.post('/cardPacks', cardPack_controller.cardPack_list);
 
-modules.export = router;
+module.exports = router;
