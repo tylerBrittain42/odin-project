@@ -7,3 +7,4 @@ express-101/node_modules
 node-mini-message-boad/node_modules
 node-mini-message-board/node_modules/
 node-inventory-application/node_modules/
+node-inventory-application/.eslintrc.js

@@ -17,7 +17,18 @@
   <div class='container-fluid'>
    <div class='row'>
     <%- include('partials/sidebar') -%> 
-    <div class='col-sm-10' id='content'>a</div>
+    <div class='col-sm-10' id='content'>
+      <h1>The Game Hub</h1>
+      <p>Welcome to <em>GameHub</em>, a simple way to practice creating a full stack application with technologies such as Express.js and MongoDB</p>
+      <p>Note: This site was modeled after the <em>MDN library express tutorial</em>. My learning focus was on backend technologies and for the most part utilized the css and design from the tutorial</p>
+      <h1>Dynamic Content</h1>
+      <ul>
+        <li><strong>Games: </strong> <%= data.game_count %> </li>
+        <li><strong>Systems: </strong> <%= data.system_count%></li>
+        <li><strong>Card Packs: </strong> <%= data.cardPack_count %> </li>
+      </ul>
+    
+    </div>
    </div>
   </div>
 

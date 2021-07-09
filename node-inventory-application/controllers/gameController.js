@@ -1,7 +1,27 @@
 const Game = require('../models/game');
+const System = require('../models/system')
+const CardPack = require('../models/cardPack');
+
+const async = require('async');
+
 
 exports.game_index = (req, res) => {
-    res.render('index');
+
+    async.parallel({
+        game_count: function(callback) {
+            Game.countDocuments({}, callback); 
+        },
+        system_count: function(callback) {
+            System.countDocuments({}, callback);
+        },
+        cardPack_count: function(callback){
+            CardPack.countDocuments({},callback)
+        }
+
+
+    }, (err, results) => { 
+        res.render('index', {data: results});
+    })
 }
 
 exports.game_list = (req, res) => {
