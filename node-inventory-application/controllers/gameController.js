@@ -79,7 +79,11 @@ exports.game_create_post = [
 ]
 
 exports.game_delete_get = (req, res) => {
-    res.send('NOT IMPLEMENTED')
+    Game.findById(req.params.id)
+    .exec((e, game_details) => {
+        if(e) { return(next(e)) }
+        res.render('game_delete', {game:game_details})
+    })
 }
 
 exports.game_delete_post = (req, res) => {
