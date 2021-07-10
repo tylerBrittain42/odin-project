@@ -45,7 +45,7 @@ exports.game_detail = (req, res, next) => {
 }
 
 exports.game_create_get = (req, res) => {
-    res.send('NOT IMPLEMENTED')
+    res.render('game_form')
 }
 
 exports.game_create_post = (req, res) => {
