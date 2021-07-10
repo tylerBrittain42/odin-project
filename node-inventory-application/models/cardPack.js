@@ -13,7 +13,7 @@ const CardPackSchema = new Schema(
 
 CardPackSchema
 .virtual('url')
-.get(() => {
+.get(function() {
     return('/catalog/cardpack/' + this._id)
 });
 

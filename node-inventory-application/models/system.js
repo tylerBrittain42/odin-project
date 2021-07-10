@@ -11,7 +11,7 @@ const SystemSchema = new Schema(
 
 SystemSchema
 .virtual('url')
-.get(() => {
+.get(function() {
     return('/catalog/system/' + this._id)
 });
 

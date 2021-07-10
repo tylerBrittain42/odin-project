@@ -13,7 +13,7 @@ const GameSchema = new Schema(
 
 GameSchema
 .virtual('url')
-.get(() => {
+.get(function() {
     return('/catalog/game/' + this._id)
 });
 
