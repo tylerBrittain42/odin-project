@@ -1,11 +1,23 @@
 const System = require('../models/system');
 
 exports.system_list = (req, res) => {
-    res.send('NOT IMPLEMENTED')
+
+    System.find({}, 'name')
+        .exec((e, list_systems) => {
+            if(e) { res.json({'error':e})}
+            console.log(list_systems)
+            res.render('system_list', {inventory:list_systems})
+        })
+
 }
 
 exports.system_detail = (req, res) => {
-    res.send('NOT IMPLEMENTED')
+    System.findById(req.params.id)
+        .exec((e, system_details) => {
+            if(e) { res.json({'error':e})}
+            console.log(system_details)
+            res.render('system_detail', {system:system_details})
+        })
 }
 
 exports.system_create_get = (req, res) => {

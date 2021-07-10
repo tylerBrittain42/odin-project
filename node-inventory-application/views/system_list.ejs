@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Games</title>
+    <title>Systems</title>
 
     <link
       rel="stylesheet"
@@ -20,14 +20,16 @@
       <div class="row">
         <%- include('partials/sidebar') %>
         <div class="col-sm-10" id="content">
-          <h1>Title: <%= game.title %> </h1>
-          <p><strong>System:</strong> <%= game.system %> </p>
-          <p><strong>Age Rating:</strong> <%= game.age_rating %> </p>
-          <p><strong>Price:</strong> <%= game.price  %> </p>
-          <hr>
-          <p><a href="">Delete Game</a></p>
-          <p><a href="">Update Game</a></p>
+          <h1>Systems list</h1>
+          <ul>
+            <% inventory.forEach(element => { %>
+            <li>
+              <a href="<%= element.url %> "><%= element.name %> </a> 
+            </li>
+            <% }) %>
+          </ul>
         </div>
+      </div>
     </div>
 
     <script
