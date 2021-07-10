@@ -3,6 +3,8 @@ const System = require('../models/system')
 const CardPack = require('../models/cardPack');
 
 const async = require('async');
+const { body,validationResult } = require('express-validator');
+
 
 
 exports.game_index = (req, res) => {
@@ -48,9 +50,33 @@ exports.game_create_get = (req, res) => {
     res.render('game_form')
 }
 
-exports.game_create_post = (req, res) => {
-    res.send('NOT IMPLEMENTED')
+exports.game_create_post = [
+
+    body('title', 'Title must not be empty.').trim().isLength({ min: 1 }).escape(),
+    body('price', 'Price must not be empty.').trim().isLength({ min: 1 }).escape(),
+    body('system').escape(),
+    (req, res, next) => {
+
+        const errors = validationResult(req);
+
+        const game = new Game(
+            {
+                title: req.body.title,
+                price: req.body.price,
+                system: req.body.system,
+                age_rating: req.body.AgeRating
+            }
+        );
+
+        if (!errors.isEmpty()) { res.render('game_form', {errors: errors}) }
+        else{
+            game.save((e) => {
+                if(e) { return next(e) }
+                res.redirect(game.url)
+            })
+        }
 }
+]
 
 exports.game_delete_get = (req, res) => {
     res.send('NOT IMPLEMENTED')

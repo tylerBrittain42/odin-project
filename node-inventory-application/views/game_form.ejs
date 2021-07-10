@@ -39,7 +39,7 @@
               <div class='form-group'>
                 <label for="Age-Rating">Age Rating:</label>
                 <br>
-                <select class='form-control' name="Age-Rating" id="Age-Rating" required=true>
+                <select class='form-control' name="AgeRating" id="AgeRating" required=true>
                   <option value="E">E for Everyone</option>
                   <option value="E10">E10 for Everyone 10 and up</option>
                   <option value="T">T for Teens</option>
@@ -50,6 +50,14 @@
             </form>
         </div>
       </div>
+      <!-- checking if errors exists -->
+      <% if (typeof errors != "undefined") { %>
+        <ul>
+        <% errors.forEach(error => { %>
+         <li><% error %> </li>
+        <% }) %>
+      </ul>
+      <% } %>
     </div>
 
     <script
