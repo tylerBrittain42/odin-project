@@ -59,7 +59,7 @@ router.post('/system/:id/update', system_controller.system_update_post);
 router.get('/system/:id', system_controller.system_detail);
 
 // GET request for list of all systems
-router.post('/systems', system_controller.system_list);
+router.get('/systems', system_controller.system_list);
 
 
 // --- CARD PACK ROUTES --- 
@@ -86,6 +86,6 @@ router.post('/cardPack/:id/update', cardPack_controller.cardPack_update_post);
 router.get('/cardPack/:id', cardPack_controller.cardPack_detail);
 
 // GET request for list of all cardPacks
-router.post('/cardPacks', cardPack_controller.cardPack_list);
+router.get('/cardPacks', cardPack_controller.cardPack_list);
 
 module.exports = router;
