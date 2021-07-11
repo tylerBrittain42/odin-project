@@ -22,12 +22,6 @@ router.get('/game/:id/delete', game_controller.game_delete_get);
 // POST game deletion
 router.post('/game/:id/delete', game_controller.game_delete_post);
 
-// GET game update
-router.get('/game/:id/update', game_controller.game_update_get);
-
-// POST game update
-router.post('/game/:id/update', game_controller.game_update_post);
-
 // GET request for a single game
 router.get('/game/:id', game_controller.game_detail);
 
@@ -49,12 +43,6 @@ router.get('/system/:id/delete', system_controller.system_delete_get);
 // POST system deletion
 router.post('/system/:id/delete', system_controller.system_delete_post);
 
-// GET system update
-router.get('/system/:id/update', system_controller.system_update_get);
-
-// POST system update
-router.post('/system/:id/update', system_controller.system_update_post);
-
 // GET request for a single system
 router.get('/system/:id', system_controller.system_detail);
 
@@ -75,12 +63,6 @@ router.get('/cardPack/:id/delete', cardPack_controller.cardPack_delete_get);
 
 // POST cardPack deletion
 router.post('/cardPack/:id/delete', cardPack_controller.cardPack_delete_post);
-
-// GET cardPack update
-router.get('/cardPack/:id/update', cardPack_controller.cardPack_update_get);
-
-// POST cardPack update
-router.post('/cardPack/:id/update', cardPack_controller.cardPack_update_post);
 
 // GET request for a single cardPack
 router.get('/cardPack/:id', cardPack_controller.cardPack_detail);

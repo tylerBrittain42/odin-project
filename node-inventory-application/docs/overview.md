@@ -28,8 +28,7 @@
 - create POST
 - delete GET
 - delete POST
-- update GET
-- update POST
+
 
 
 <br><br>

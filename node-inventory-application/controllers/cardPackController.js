@@ -32,10 +32,3 @@ exports.cardPack_delete_post = (req, res) => {
     res.send('NOT IMPLEMENTED')
 }
 
-exports.cardPack_update_get = (req, res) => {
-    res.send('NOT IMPLEMENTED')
-}
-
-exports.cardPack_update_post = (req, res) => {
-    res.send('NOT IMPLEMENTED')
-}

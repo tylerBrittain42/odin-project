@@ -36,10 +36,3 @@ exports.system_delete_post = (req, res) => {
     res.send('NOT IMPLEMENTED')
 }
 
-exports.system_update_get = (req, res) => {
-    res.send('NOT IMPLEMENTED')
-}
-
-exports.system_update_post = (req, res) => {
-    res.send('NOT IMPLEMENTED')
-}

@@ -93,10 +93,3 @@ exports.game_delete_post = (req, res) => {
     })
 }
 
-exports.game_update_get = (req, res) => {
-    res.send('NOT IMPLEMENTED')
-}
-
-exports.game_update_post = (req, res) => {
-    res.send('NOT IMPLEMENTED')
-}
