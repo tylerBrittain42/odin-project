@@ -59,10 +59,18 @@ exports.cardPack_create_post = [
 ]
 
 exports.cardPack_delete_get = (req, res) => {
-    res.send('NOT IMPLEMENTED')
+    CardPack.findById(req.params.id)
+    .exec((e, cardPack_details) => {
+        if(e) { return e}
+        res.render('cardPack_delete', {pack: cardPack_details})
+    })
 }
 
 exports.cardPack_delete_post = (req, res) => {
-    res.send('NOT IMPLEMENTED')
+    console.log(req.body)
+    CardPack.findByIdAndRemove(req.body.id.substring(0,req.body.id.length - 1 ), function deleteCardPack(e) {
+        if(e) { return({'error':e})}
+        res.redirect('../../../catalog/cardPacks')
+    })
 }
 

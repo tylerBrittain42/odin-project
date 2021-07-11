@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Card Packs</title>
+    <title>Delete Card Pack</title>
 
     <link
       rel="stylesheet"
@@ -17,17 +17,19 @@
   </head>
   <body>
     <div class="container-fluid">
-      <div class="row">
-        <%- include('partials/sidebar') %>
-        <div class="col-sm-10" id="content">
-          <h1>Expansion <%= pack.name %> </h1>
-          <p><strong>Francise:</strong> <%= pack.franchise %> </p>
-          <p><strong>Card count:</strong> <%= pack.count %> </p>
-          <p><strong>Price:</strong> <%= pack.price  %> </p>
-          <hr>
-          <p><a href="<%= pack.url %>/delete">Delete Card Pack</a></p>
-        </div>
-    </div>
+        <div class="row">
+          <%- include('partials/sidebar') %>
+          <div class="col-sm-10" id="content">
+            <h1>Delete Card Pack: <%= pack.name %> </h1>
+            <p>Do you really want to delete this Card Pack?</p>
+            <form action="" method="post">
+                <div class='form-group'>
+                    <input type="hidden" name="id" required=true, value='<%= pack._id %> '>
+                </div>
+                <button type="submit" class='btn btn-primary'>Delete</button>
+            </form>
+          </div>
+      </div>
 
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
