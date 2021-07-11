@@ -32,7 +32,6 @@ exports.cardPack_create_post = [
 
     (req, res, next) => {
 
-       console.log(req.body)
         const errors = validationResult(req);
 
         const cardPack = new CardPack(
@@ -67,7 +66,6 @@ exports.cardPack_delete_get = (req, res) => {
 }
 
 exports.cardPack_delete_post = (req, res) => {
-    console.log(req.body)
     CardPack.findByIdAndRemove(req.body.id.substring(0,req.body.id.length - 1 ), function deleteCardPack(e) {
         if(e) { return({'error':e})}
         res.redirect('../../../catalog/cardPacks')
