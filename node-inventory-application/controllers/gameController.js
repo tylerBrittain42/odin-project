@@ -6,7 +6,6 @@ const async = require('async');
 const { body,validationResult } = require('express-validator');
 
 
-
 exports.game_index = (req, res) => {
 
     async.parallel({
@@ -87,7 +86,11 @@ exports.game_delete_get = (req, res) => {
 }
 
 exports.game_delete_post = (req, res) => {
-    res.send('NOT IMPLEMENTED')
+    console.log(req.body)
+    Game.findByIdAndRemove(req.body.id.substring(0,req.body.id.length - 1 ), function deleteGame(e) {
+        if(e) { return({'error':e})}
+        res.redirect('../../../catalog/games')
+    })
 }
 
 exports.game_update_get = (req, res) => {
