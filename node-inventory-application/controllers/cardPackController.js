@@ -1,5 +1,8 @@
 const CardPack = require('../models/cardPack');
 
+const { body,validationResult } = require('express-validator');
+
+
 exports.cardPack_list = (req, res) => {
     CardPack.find({},'name franchise')
         .exec((e, list_cardPacks) => {
@@ -17,12 +20,43 @@ exports.cardPack_detail = (req, res) => {
 }
 
 exports.cardPack_create_get = (req, res) => {
-    res.send('NOT IMPLEMENTED')
+    res.render('cardPack_form')
 }
 
-exports.cardPack_create_post = (req, res) => {
-    res.send('NOT IMPLEMENTED')
-}
+exports.cardPack_create_post = [
+    
+    body('name', 'Name must not be empty.').trim().isLength({ min: 1 }).escape(),
+    body('franchise', 'Franchise must not be empty.').trim().isLength({ min: 1 }).escape(),
+    body('count', 'Count must not be empty.').trim().isLength({ min: 1 }).escape(),
+    body('price', 'Price must not be empty.').trim().isLength({ min: 1 }).escape(),
+
+    (req, res, next) => {
+
+       console.log(req.body)
+        const errors = validationResult(req);
+
+        const cardPack = new CardPack(
+            {
+                name: req.body.name,
+                franchise: req.body.franchise,
+                count: req.body.count,
+                price: req.body.count
+            }
+        )
+
+        if (!errors.isEmpty()) { res.render('cardPack_form') }
+        else{
+            cardPack.save((e) => {
+                if(e) { return next(e) }
+                res.redirect(cardPack.url)
+            })
+        }
+
+
+    }
+
+
+]
 
 exports.cardPack_delete_get = (req, res) => {
     res.send('NOT IMPLEMENTED')
