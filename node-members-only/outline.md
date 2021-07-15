@@ -18,3 +18,6 @@
 - Login page
 - Compose message page
 - View feed (with user/non user views using ejs)
+
+## Controllers
+tbd
