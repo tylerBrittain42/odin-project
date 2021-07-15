@@ -9,3 +9,6 @@ node-mini-message-board/node_modules/
 node-inventory-application/node_modules/
 node-inventory-application/.eslintrc.js
 node-authentication/node_modules/
+node-authentication/.env
+node-members-only/node_modules/
+node-members-only/node_modules/.env
