@@ -1,15 +1,12 @@
 exports.feed = function(req, res) {
-
-    res.send('<h1>Not set up yes</h1>')
+    res.render('feed')
 }
 
 exports.get_compose = function(req, res) {
-
-    res.send('<h1>Not set up yet</h1>')
+    res.render('compose')
 }
 
 
 exports.post_compose = function(req, res) {
-
-    res.send('<h1>Not set up yes</h1>')
+    res.send('<h1>post request recieved</h1>')
 }
