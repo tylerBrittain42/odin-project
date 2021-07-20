@@ -1,8 +1,12 @@
 const Message = require('../models/message')
 
 
-exports.feed = function(req, res) {
-    res.render('feed')
+exports.feed = async function(req, res) {
+    const message_list = await Message.find(function (e, results) {
+        return results
+    })
+
+    res.render('feed', {message_list:message_list})
 }
 
 exports.get_compose = function(req, res) {

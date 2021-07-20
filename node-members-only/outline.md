@@ -28,6 +28,7 @@ This is a rough plan of attack for the *Member's Only* project featured on the o
 ## Compose
 - */* - page to create a message (**messageController** GET and **messageController** POST)
 # After Rough implementation
+1. Create Header(partial)
 1. fix login
 1. Fix feed ejs
 1. Add in passport authentication
