@@ -10,11 +10,16 @@ const composeRouter = require('./routes/compose')
 const app = express()
 const port = 3000
 
+// connecting to database
+mongoose.connect('mongodb://127.0.0.1:27017/members-only',   {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.set("useCreateIndex", true);
+
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json()) 
+
 
 app.use(express.static("public"))
 
