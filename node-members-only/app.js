@@ -19,8 +19,8 @@ app.use(express.json())
 app.use(express.static("public"))
 
 app.use('/', indexRouter);
-app.use('/account', accountRouter)
-app.use('/compose', composeRouter)
+app.use('/account', accountRouter);
+app.use('/compose', composeRouter);
 
 
 app.listen(port, () => {
