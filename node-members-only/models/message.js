@@ -6,7 +6,7 @@ const MessageSchema = new Schema(
         title: {type: String, required: true},
         body: {type: String, required: true},
         author: {type: String, required: true},
-        timestamp: {type: Date, required: true}
+        timestamp: {type: Date, default: Date.now}
 
     }
 );
