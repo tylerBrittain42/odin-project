@@ -34,6 +34,7 @@ This is a rough plan of attack for the *Member's Only* project featured on the o
 1. Add in passport authentication
 1. Hash stored passwords
 1. Fix author in a compose message
+1. Add logout route and controller
 # Maybe
 - Sanitize and validate
 - Upgrade membership
