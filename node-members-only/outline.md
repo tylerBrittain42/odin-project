@@ -28,10 +28,8 @@ This is a rough plan of attack for the *Member's Only* project featured on the o
 ## Compose
 - */* - page to create a message (**messageController** GET and **messageController** POST)
 # After Rough implementation
-1. Create Header(partial)
-1. fix login
-1. Fix feed ejs
 1. Add in passport authentication
+1. Fix feed ejs (make hidden when not logged in)
 1. Hash stored passwords
 1. Fix author in a compose message
 1. Add logout route and controller

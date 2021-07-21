@@ -7,6 +7,9 @@ const user_controller = require('../controllers/userController')
 router.get('/login', user_controller.get_login)
 router.post('/login', user_controller.post_login)
 
+// Logout route
+router.get('/logout', (req, res) => {res.redirect('../../')})
+
 // Sign-up route
 router.get('/sign-up', user_controller.get_sign_up)
 router.post('/sign-up', user_controller.post_sign_up)
