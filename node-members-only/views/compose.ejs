@@ -17,8 +17,9 @@
 
 </head>
 <body>
-
   <%- include('partials/header') %>
+
+    <div class='container form-container'>
     <form class="form-signin" action='' method="POST">
         <h1 class="h3 mb-3 font-weight-normal">Compose a message</h1>
         <label for="entryTitle">Title</label>
@@ -27,7 +28,7 @@
               <textarea class="form-control" name="entryBody" autocomplete="off" rows="4"> </textarea>
         <button class="btn btn-lg btn-primary btn-block">Submit Message</button>
       </form>
-
+</div>
       
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
