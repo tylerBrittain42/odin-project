@@ -6,6 +6,7 @@ const mongoose = require('mongoose')
 const path = require('path')
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
+const session = require("express-session");
 
 const indexRouter = require('./routes/index')
 const accountRouter = require('./routes/account')
@@ -26,6 +27,7 @@ app.use(express.json())
 
 app.use(express.static("public"))
 
+app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
