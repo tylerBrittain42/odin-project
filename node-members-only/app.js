@@ -1,7 +1,11 @@
+//  USING THE FOLLOWING LINK
+// https://mherman.org/blog/user-authentication-with-passport-dot-js/#setup
 const express = require('express')
 const ejs = require('ejs')
 const mongoose = require('mongoose')
 const path = require('path')
+const passport = require('passport')
+const LocalStrategy = require('passport-local').Strategy
 
 const indexRouter = require('./routes/index')
 const accountRouter = require('./routes/account')
@@ -20,12 +24,21 @@ app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json()) 
 
-
 app.use(express.static("public"))
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+const User = require('./models/user')
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use('/', indexRouter);
 app.use('/account', accountRouter);
 app.use('/compose', composeRouter);
+
+
 
 
 app.listen(port, () => {
