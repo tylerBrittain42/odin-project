@@ -7,11 +7,16 @@ const user_controller = require('../controllers/userController')
 
 // Login route
 router.get('/login', user_controller.get_login)
-router.post('/login', (req, res) => passport.authenticate('local', { successRedirect: '/register', failureRedirect: 'login', })(req, res));
-
-
+// router.post('/login', passport.authenticate('local', { successRedirect: '/', failureRedirect: 'login', }));
+router.post('/login', passport.authenticate('local'), async function(req, res) {
+    console.log(req.user)
+    res.redirect('/');
+});
 // Logout route
-router.get('/logout', (req, res) => {res.redirect('../../')})
+router.get('/logout', (req, res) => {
+    req.logout()
+    console.log(req.user)
+    res.redirect('../../')})
 
 // Sign-up route
 router.get('/sign-up', user_controller.get_sign_up)
@@ -24,6 +29,7 @@ router.post('/sign-up', function(req, res) {
 
         passport.authenticate('local')(req, res, function () {
           console.log(`User ${req.body.username} registered`)
+          console.log(req.user)
           res.redirect('/');
         });
     });
