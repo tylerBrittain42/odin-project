@@ -15,8 +15,6 @@
 
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="stylesheet" href="/stylesheets/form-style.css" />
-
-
   </head>
   <body>
     <%- include('partials/header') %>
@@ -24,14 +22,24 @@
       <% message_list.forEach(message => { %>
       <div class="card card-spacing">
         <div class="card-header">
+          <% if (user) { %>
           <h6><%= message.timestamp %></h6>
+          <% } %>
         </div>
         <div class="card-body">
           <div class="card-title">
+            <% if (user) { %>
             <h5><%= message.title %></h5>
+            <% } else{ %>
+            <h5>Anonymous</h5>
+            <% } %>
           </div>
           <div class="card-text">
+            <% if (user) { %>
             <p><%= message.body %></p>
+            <% } else{ %>
+            <p>Login to see this message</p>
+            <% } %>
           </div>
         </div>
       </div>
