@@ -24,7 +24,6 @@ This is a rough plan of attack for the *Member's Only* project featured on the o
 ## Account
 - */login* - login page (**userController** GET and **userController** POST)
 - */Sign-up* - signup for acct (**userControllerGET** and **userControllerPOST**)
-- */Upgrade* - passcode page to upgrade account (**userControllerGET** and **userControllerPOST**)
 ## Compose
 - */* - page to create a message (**messageController** GET and **messageController** POST)
 # After Rough implementation
@@ -33,6 +32,3 @@ This is a rough plan of attack for the *Member's Only* project featured on the o
 1. Hash stored passwords
 1. Fix author in a compose message
 1. Add logout route and controller
-# Maybe
-- Sanitize and validate
-- Upgrade membership
