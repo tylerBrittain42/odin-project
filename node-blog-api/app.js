@@ -1,16 +1,16 @@
 const express = require('express')
 const mongoose = require('mongoose')
 
+const entriesRouter = require('./routes/entries')
+
 const app = express()
 const port = 3000
 
 
 
-app.get('/', (req, res) => {
-    res.send('<h1>Temp index</h1>')
-})
 
 
+app.use('/entries', entriesRouter)
 
 
 app.listen(port, () => {
