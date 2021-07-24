@@ -12,3 +12,4 @@ node-authentication/node_modules/
 node-authentication/.env
 node-members-only/node_modules/
 node-members-only/node_modules/.env
+node-blog-api/node_modules/
