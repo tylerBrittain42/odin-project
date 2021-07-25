@@ -10,7 +10,7 @@ router.delete('/', entriesController.clear_blog)
 
 // routes for a specific post
 router.get('/:messageID', entriesController.get_post)
-router.post('.:messageID', entriesController.delete_entry)
+router.delete('/:messageID', entriesController.delete_entry)
 
 
 module.exports = router
