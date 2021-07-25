@@ -15,5 +15,4 @@ This is a rough outline for the API project found in The Odin Project. This proj
 ## **/:MessageID**
 - **GET:** Post by id
 - **DELETE:** Post by id
-# Plan of Attack
-1. Clean up code
+
