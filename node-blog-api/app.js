@@ -3,10 +3,10 @@ const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
 
 const entriesRouter = require('./routes/entries')
-const { options } = require('./routes/entries')
 
 const app = express()
 const port = 3000
+
 
 // connecting to database
 mongoose.connect('mongodb://127.0.0.1:27017/blog-api',   {useNewUrlParser: true, useUnifiedTopology: true});
@@ -18,6 +18,11 @@ mongoose.set("useCreateIndex", true);
 // app.use(express.urlencoded({ extended: true }))
 // app.use(express.json()) 
 // app.use(express.static("public"))
+
+// passport setup
+const passport = require('passport')
+const jwtStrategy = require('./jwt-strategy')
+passport.use(jwtStrategy);
 
 
 app.use('/entries', entriesRouter)
@@ -37,7 +42,7 @@ app.post('/login', (req,res) =>{
         if(userPW === 'pass'){
             console.log('yes')
             const secret = 'This is the secret key'
-            const token = jwt.sign({user}, secret, {expiresIn: '30s'})
+            const token = jwt.sign({user}, secret, {expiresIn: '1000000s'})
             return res.status(200).json({
                 message: "auth passed",
                 token
@@ -46,10 +51,10 @@ app.post('/login', (req,res) =>{
     
     return res.status(401).json({ message: "Auth Failed" })
 
+})
 
-
-
-    res.send('login post recieved')
+app.get('/secret', passport.authenticate('jwt', {session:false}), (req, res) => {
+    return res.status(200).send("YAY! this is a protected Route")
 })
 
 
