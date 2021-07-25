@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const express = require('express')
 const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
@@ -11,7 +13,7 @@ const port = 3000
 
 
 // connecting to database
-mongoose.connect('mongodb://127.0.0.1:27017/blog-api',   {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.MONGO,   {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.set("useCreateIndex", true);
 
 // passport setup
@@ -31,11 +33,10 @@ app.post('/login', (req,res) =>{
     const user = req.query.email
     const userPW = req.query.password
 
-    if(user === 'correct@email.com'){
-        if(userPW === 'pass'){
-            console.log('yes')
-            const secret = 'This is the secret key'
-            const token = jwt.sign({user}, secret, {expiresIn: '1000000s'})
+    if(user === process.env.USER){
+        if(userPW === process.env.PASSWORD){
+            const secret = process.env.SECRET
+            const token = jwt.sign({user}, secret, {expiresIn: '7d'})
             return res.status(200).json({
                 message: "auth passed",
                 token
