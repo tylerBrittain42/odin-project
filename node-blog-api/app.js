@@ -1,6 +1,8 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
+const passport = require('passport')
+const jwtStrategy = require('./jwt-strategy')
 
 const entriesRouter = require('./routes/entries')
 
@@ -20,8 +22,6 @@ mongoose.set("useCreateIndex", true);
 // app.use(express.static("public"))
 
 // passport setup
-const passport = require('passport')
-const jwtStrategy = require('./jwt-strategy')
 passport.use(jwtStrategy);
 
 
