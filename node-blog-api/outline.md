@@ -16,8 +16,4 @@ This is a rough outline for the API project found in The Odin Project. This proj
 - **GET:** Post by id
 - **DELETE:** Post by id
 # Plan of Attack
-
-1. Add JWT and passport
-1. Implement Front facing site
 1. Clean up code
-1. Add the virutal url(see library example)?

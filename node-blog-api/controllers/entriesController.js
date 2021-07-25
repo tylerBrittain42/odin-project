@@ -15,25 +15,17 @@ exports.add_entry = async function(req, res) {
 
     const newEntry = await new Entry({title:entryTitle, body:entryBody})
     newEntry.save(function (e) {
-        if(e) {
-            res.status(400).send('Bad Request')
-        }
-        else{
-            res.sendStatus(200)
-        }
+        if(e) { res.status(400).send('Bad Request') }
+        else { res.sendStatus(200) }
     })
 }
 
 exports.clear_blog = function(req, res) {
+
     Entry.deleteMany({}, (e) => {
-        if(e) {
-            res.status(400).send('Bad Request')
-        }
-        else{
-            res.sendStatus(200)
-        }
+        if(e) { res.status(400).send('Bad Request') }
+        else { res.sendStatus(200) }
     })
-    
 }
 
 exports.get_post = function(req, res) {
@@ -42,14 +34,9 @@ exports.get_post = function(req, res) {
     
     Entry.findById(entryID)
     .exec((e, entry) => {
-        if(e) {
-            res.status(400).send('Bad Request')
-        } 
-        else{
-            res.json(entry)
-        }
-    })
-    
+        if(e) { res.status(400).send('Bad Request') } 
+        else { res.json(entry) }
+    })   
 }
 
 exports.delete_entry = function(req, res) {
@@ -58,12 +45,7 @@ exports.delete_entry = function(req, res) {
     
     Entry.findByIdAndDelete(entryID)
     .exec((e) => {
-        if(e) {
-            console.log(e)
-            res.status(400).send('Bad Request')
-        } 
-        else{
-            res.sendStatus(200)
-        }
+        if(e) { res.status(400).send('Bad Request') } 
+        else { res.sendStatus(200) }
     })    
 }

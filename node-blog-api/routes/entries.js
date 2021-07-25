@@ -13,5 +13,4 @@ router.delete('/', passport.authenticate('jwt', {session:false}), entriesControl
 router.get('/:messageID', passport.authenticate('jwt', {session:false}), entriesController.get_post)
 router.delete('/:messageID', passport.authenticate('jwt', {session:false}), entriesController.delete_entry)
 
-
 module.exports = router
